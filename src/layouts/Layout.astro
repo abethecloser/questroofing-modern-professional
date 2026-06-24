@@ -1,0 +1,146 @@
+<!-- 
+  ============================================================
+  PROJECT: Roofing Enterprise – Multi-Page Astro Application
+  ARCHITECT: Principal Front-End Developer / Astro Architect
+  DESIGN: Industrial authority · Deep charcoal · Amber #F2A900
+  PAGES: index | about | services | process | gallery | service-area
+          reviews | faq | blog | contact
+  ASSETS: src/images/logo.webp, image1.jpg … image10.webp
+  COMPONENTS: Layout, Header, Footer, ServiceCard, GalleryFilter …
+  ============================================================
+-->
+
+<!-- ====== src/layouts/Layout.astro ====== -->
+---
+// Global Layout – HTML boilerplate, Tailwind, Font Awesome, universal header/footer
+export interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = 'Summit Roofing · Commercial & Residential Excellence', description = 'Industrial-grade roofing solutions with uncompromising quality.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Tailwind via CDN (production compile) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style is:global>
+      /* custom industrial tweaks */
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      .accent-amber { color: #F2A900; }
+      .bg-amber { background-color: #F2A900; }
+      .border-amber { border-color: #F2A900; }
+      .hover-amber:hover { background-color: #F2A900; color: #1a1a1a; }
+      .text-charcoal { color: #1a1a1a; }
+      .bg-charcoal { background-color: #1a1a1a; }
+      .bg-slate-dark { background-color: #2d3748; }
+      .transition-smooth { transition: all 0.3s ease-in-out; }
+      .card-hover:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.3); }
+      /* sticky header */
+      .sticky-nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 50; background: rgba(26,26,26,0.92); backdrop-filter: blur(4px); }
+      /* mobile menu */
+      .mobile-menu { display: none; }
+      .mobile-menu.open { display: block; }
+      @media (min-width: 768px) { .mobile-menu { display: none !important; } }
+      /* infinite carousel */
+      .carousel-track { display: flex; gap: 2rem; animation: scroll 28s linear infinite; width: max-content; }
+      .carousel-track:hover { animation-play-state: paused; }
+      @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+      /* FAQ details */
+      details summary::-webkit-details-marker { display: none; }
+      details summary { cursor: pointer; list-style: none; }
+      .faq-answer { padding: 0.75rem 1.25rem 1.25rem 1.25rem; }
+      /* gallery filter */
+      .gallery-item { display: block; }
+      .gallery-item.hide { display: none; }
+    </style>
+  </head>
+  <body class="bg-white text-charcoal antialiased">
+    <!-- ====== UNIVERSAL HEADER (sticky) ====== -->
+    <header class="sticky-nav border-b border-[#F2A900]/30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+        <!-- Brand + Logo -->
+        <div class="flex items-center gap-3">
+          <img src="/src/images/logo.webp" alt="Summit Roofing" class="h-12 w-auto" />
+          <span class="text-white text-xl font-bold tracking-tight">SUMMIT<span class="text-[#F2A900]">ROOF</span></span>
+        </div>
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-200">
+          <a href="/" class="hover:text-[#F2A900] transition-smooth">Home</a>
+          <a href="/about" class="hover:text-[#F2A900] transition-smooth">About</a>
+          <a href="/services" class="hover:text-[#F2A900] transition-smooth">Services</a>
+          <a href="/process" class="hover:text-[#F2A900] transition-smooth">Process</a>
+          <a href="/gallery" class="hover:text-[#F2A900] transition-smooth">Gallery</a>
+          <a href="/service-area" class="hover:text-[#F2A900] transition-smooth">Locations</a>
+          <a href="/reviews" class="hover:text-[#F2A900] transition-smooth">Reviews</a>
+          <a href="/faq" class="hover:text-[#F2A900] transition-smooth">FAQ</a>
+          <a href="/blog" class="hover:text-[#F2A900] transition-smooth">Insights</a>
+          <a href="/contact" class="bg-[#F2A900] text-charcoal px-5 py-2 rounded-md font-bold hover:bg-white transition-smooth">Get Quote</a>
+        </nav>
+        <!-- Contact + hamburger -->
+        <div class="flex items-center gap-4">
+          <span class="hidden lg:inline text-white text-sm"><i class="fas fa-phone-alt text-[#F2A900] mr-2"></i>+1 (800) 555-0199</span>
+          <button id="hamburger" class="md:hidden text-white text-2xl focus:outline-none" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile dropdown -->
+      <div id="mobileMenu" class="mobile-menu bg-charcoal/95 border-t border-[#F2A900]/20 md:hidden">
+        <div class="px-4 py-4 flex flex-col space-y-3 text-gray-200 text-sm font-medium">
+          <a href="/" class="hover:text-[#F2A900] transition-smooth">Home</a>
+          <a href="/about" class="hover:text-[#F2A900] transition-smooth">About</a>
+          <a href="/services" class="hover:text-[#F2A900] transition-smooth">Services</a>
+          <a href="/process" class="hover:text-[#F2A900] transition-smooth">Process</a>
+          <a href="/gallery" class="hover:text-[#F2A900] transition-smooth">Gallery</a>
+          <a href="/service-area" class="hover:text-[#F2A900] transition-smooth">Locations</a>
+          <a href="/reviews" class="hover:text-[#F2A900] transition-smooth">Reviews</a>
+          <a href="/faq" class="hover:text-[#F2A900] transition-smooth">FAQ</a>
+          <a href="/blog" class="hover:text-[#F2A900] transition-smooth">Insights</a>
+          <a href="/contact" class="bg-[#F2A900] text-charcoal px-4 py-2 rounded text-center font-bold">Get a Quote</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ====== PAGE CONTENT ====== -->
+    <main class="pt-20">
+      <slot />
+    </main>
+
+    <!-- ====== UNIVERSAL FOOTER ====== -->
+    <footer class="bg-charcoal text-gray-300 border-t border-[#F2A900]/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <img src="/src/images/logo.webp" alt="Summit" class="h-10 w-auto" />
+            <span class="text-white text-xl font-bold">SUMMIT<span class="text-[#F2A900]">ROOF</span></span>
+          </div>
+          <p class="text-sm">Industrial-grade roofing with uncompromising safety and precision.</p>
+          <div class="mt-4 flex gap-4 text-[#F2A900] text-lg">
+            <i class="fab fa-facebook-f"></i><i class="fab fa-linkedin-in"></i><i class="fab fa-instagram"></i>
+          </div>
+        </div>
+        <div><h4 class="text-white font-semibold mb-3">Services</h4><ul class="text-sm space-y-2"><li>Commercial Roofing</li><li>Residential</li><li>Repair & Maintenance</li><li>Inspection</li></ul></div>
+        <div><h4 class="text-white font-semibold mb-3">Company</h4><ul class="text-sm space-y-2"><li>About</li><li>Careers</li><li>Safety</li><li>Contact</li></ul></div>
+        <div><h4 class="text-white font-semibold mb-3">Contact</h4><ul class="text-sm space-y-2"><li><i class="fas fa-phone-alt text-[#F2A900] w-5"></i>+1 (800) 555-0199</li><li><i class="fas fa-envelope text-[#F2A900] w-5"></i>info@summitroof.com</li><li><i class="fas fa-map-marker-alt text-[#F2A900] w-5"></i>Denver, CO</li></ul></div>
+      </div>
+      <div class="border-t border-gray-700/40 text-center text-xs py-6 text-gray-500">&copy; 2026 Summit Roofing – Built with Astro & Tailwind</div>
+    </footer>
+
+    <!-- Hamburger toggle -->
+    <script>
+      document.getElementById('hamburger')?.addEventListener('click', function() {
+        document.getElementById('mobileMenu')?.classList.toggle('open');
+      });
+    </script>
+  </body>
+</html>

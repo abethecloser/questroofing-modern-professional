@@ -1,0 +1,1239 @@
+---
+import '../styles/global.css';
+import logoImage from '../images/logo.webp';
+import heroImage from '../images/image1.jpg';
+import image1Webp from '../images/image1.webp';
+import image2Webp from '../images/image2.webp';
+import image3Webp from '../images/image3.webp';
+import image4Webp from '../images/image4.webp';
+import image5Webp from '../images/image5.webp';
+import image6Webp from '../images/image6.webp';
+import image7Webp from '../images/image7.webp';
+import image8Webp from '../images/image8.webp';
+import image9Webp from '../images/image9.webp';
+import image10Webp from '../images/image10.webp';
+
+const company = {
+  name: 'Quest Roofing',
+  city: 'Queen Creek',
+  state: 'Arizona',
+  phone: '602-399-6455',
+  phoneHref: 'tel:6023996455',
+  email: 'info@questroofing.com',
+  emailHref: 'mailto:info@questroofing.com',
+  license: 'AZ ROC #355136',
+  credential: 'GAF Certified',
+  trust: 'Licensed, bonded, and insured',
+  coverage: 'Queen Creek and Greater Phoenix',
+  address: 'Queen Creek, AZ',
+  hours: 'Mon-Fri 7:00 AM-5:00 PM, emergency calls monitored daily'
+};
+
+const navItems = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'services', label: 'Services' },
+  { id: 'process', label: 'Process' },
+  { id: 'gallery', label: 'Gallery' },
+  { id: 'service-area', label: 'Service Area' },
+  { id: 'reviews', label: 'Reviews' },
+  { id: 'faq', label: 'FAQ' },
+  { id: 'blog', label: 'Blog' },
+  { id: 'contact', label: 'Contact' }
+];
+
+const trustIndicators = [
+  { icon: 'fa-id-card-clip', label: company.license, text: 'Arizona contractor license for homeowner verification.' },
+  { icon: 'fa-certificate', label: company.credential, text: 'Manufacturer-backed standards for roof system quality.' },
+  { icon: 'fa-file-signature', label: 'Free written estimates', text: 'Clear scope, documented options, and no verbal guesswork.' },
+  { icon: 'fa-shield-halved', label: company.trust, text: 'Professional crews, jobsite care, and documented completion.' }
+];
+
+const homeIssues = [
+  { icon: 'fa-droplet', title: 'Active leak response', text: 'Ceiling stains, roof penetrations, and rain-driven water entry documented fast.' },
+  { icon: 'fa-layer-group', title: 'Tile roof concerns', text: 'Broken tiles, worn underlayment, lifted rows, and flashing details reviewed.' },
+  { icon: 'fa-screwdriver-wrench', title: 'Repair or replacement', text: 'Photo-backed options help you decide what can wait and what needs action.' }
+];
+
+const coreValues = [
+  { icon: 'fa-camera-retro', title: 'Document the roof first', text: 'Inspection photos and plain-language findings come before a scope is approved.' },
+  { icon: 'fa-comments', title: 'Communicate like partners', text: 'Owners receive clear next steps, scheduling expectations, and scope updates.' },
+  { icon: 'fa-broom', title: 'Respect the property', text: 'Crews protect access areas, stage materials cleanly, and close with a jobsite review.' },
+  { icon: 'fa-ruler-combined', title: 'Build to the system', text: 'Tile, shingle, metal, and foam assemblies are matched to Arizona exposure.' }
+];
+
+const serviceFilters = [
+  { id: 'all', label: 'All' },
+  { id: 'residential', label: 'Residential' },
+  { id: 'commercial', label: 'Commercial' },
+  { id: 'urgent', label: 'Urgent' },
+  { id: 'planning', label: 'Planning' }
+];
+
+const services = [
+  {
+    category: 'residential',
+    icon: 'fa-house-chimney',
+    title: 'Tile Roofing',
+    image: image1Webp.src,
+    text: 'Tile inspections, underlayment planning, replacement tile staging, and finished slope review.',
+    meta: 'Clay and concrete tile'
+  },
+  {
+    category: 'residential',
+    icon: 'fa-grip-lines',
+    title: 'Shingle Roofing',
+    image: image2Webp.src,
+    text: 'Asphalt shingle repairs and full replacements with ventilation and flashing details checked.',
+    meta: 'Architectural shingles'
+  },
+  {
+    category: 'commercial',
+    icon: 'fa-industry',
+    title: 'Commercial Roofing',
+    image: image3Webp.src,
+    text: 'Low-slope roof assessments, maintenance plans, penetrations, drainage, and coating options.',
+    meta: 'Flat and low-slope systems'
+  },
+  {
+    category: 'planning',
+    icon: 'fa-solar-panel',
+    title: 'Metal Roofing',
+    image: image4Webp.src,
+    text: 'Durable metal systems for long-term performance, clean trim details, and controlled water flow.',
+    meta: 'Standing seam and panels'
+  },
+  {
+    category: 'commercial',
+    icon: 'fa-temperature-arrow-up',
+    title: 'Foam Roofing',
+    image: image5Webp.src,
+    text: 'Foam roof restoration, recoats, waterproofing, and reflective protection for intense sun exposure.',
+    meta: 'SPF and coatings'
+  },
+  {
+    category: 'urgent',
+    icon: 'fa-cloud-showers-heavy',
+    title: 'Storm and Emergency Repair',
+    image: image6Webp.src,
+    text: 'Wind, monsoon, and leak concerns triaged with temporary protection and documented repair options.',
+    meta: 'Leak and storm response'
+  },
+  {
+    category: 'planning',
+    icon: 'fa-magnifying-glass-chart',
+    title: 'Free Roof Inspection',
+    image: image7Webp.src,
+    text: 'Condition photos, visible issue notes, and a written estimate before any approved work is scheduled.',
+    meta: 'Photo-backed review'
+  },
+  {
+    category: 'urgent',
+    icon: 'fa-file-invoice',
+    title: 'Insurance Claim Support',
+    image: image8Webp.src,
+    text: 'Damage documentation, scope clarity, and photos that help owners discuss roof work confidently.',
+    meta: 'Documentation support'
+  },
+  {
+    category: 'planning',
+    icon: 'fa-clipboard-check',
+    title: 'Maintenance Programs',
+    image: image9Webp.src,
+    text: 'Seasonal checkups for penetrations, flashing, debris, cracked materials, drainage, and sealants.',
+    meta: 'Preventive care'
+  }
+];
+
+const processSteps = [
+  { number: '01', icon: 'fa-phone-volume', title: 'Request', text: 'Share the roof concern, address area, photos if available, and urgency level.' },
+  { number: '02', icon: 'fa-camera', title: 'Inspect', text: 'A roofing specialist documents visible conditions and reviews roof type, access, and risk.' },
+  { number: '03', icon: 'fa-file-lines', title: 'Estimate', text: 'You receive a written scope with repair or replacement options and scheduling notes.' },
+  { number: '04', icon: 'fa-helmet-safety', title: 'Build', text: 'Approved work is scheduled, staged, completed, cleaned up, and reviewed for closeout.' }
+];
+
+const galleryFilters = [
+  { id: 'all', label: 'All Work' },
+  { id: 'tile', label: 'Tile' },
+  { id: 'shingle', label: 'Shingle' },
+  { id: 'repair', label: 'Repair' },
+  { id: 'commercial', label: 'Commercial' }
+];
+
+const galleryItems = [
+  { category: 'tile', image: image1Webp.src, title: 'Tile roof inspection', text: 'Documented surface review before scope approval.' },
+  { category: 'tile', image: image2Webp.src, title: 'Underlayment staging', text: 'Tile rows staged for organized replacement work.' },
+  { category: 'repair', image: image3Webp.src, title: 'Flashing correction', text: 'Detail work around vulnerable roof transitions.' },
+  { category: 'commercial', image: image4Webp.src, title: 'Low-slope assessment', text: 'Drainage, penetrations, and coating condition review.' },
+  { category: 'shingle', image: image5Webp.src, title: 'Shingle replacement', text: 'Finished roof plane with clean ventilation details.' },
+  { category: 'tile', image: image6Webp.src, title: 'Tile battens', text: 'Battens and underlayment prepared for finish work.' },
+  { category: 'repair', image: image7Webp.src, title: 'Pipe jack detail', text: 'Penetration documentation for leak prevention.' },
+  { category: 'commercial', image: image8Webp.src, title: 'Foam roof surface', text: 'Reflective roof protection and waterproofing review.' },
+  { category: 'repair', image: image9Webp.src, title: 'Storm damage review', text: 'Post-weather inspection with repair recommendations.' },
+  { category: 'shingle', image: image10Webp.src, title: 'Finished slope', text: 'Clean finished surface ready for owner walkthrough.' }
+];
+
+const serviceAreas = [
+  'Queen Creek',
+  'Gilbert',
+  'Chandler',
+  'Mesa',
+  'Tempe',
+  'Scottsdale',
+  'Paradise Valley',
+  'Phoenix',
+  'San Tan Valley',
+  'Apache Junction',
+  'Ahwatukee',
+  'Florence'
+];
+
+const reviews = [
+  { name: 'Kristin M.', area: 'Queen Creek', quote: 'The inspection photos made the repair decision clear. The crew was organized, on time, and careful around the property.' },
+  { name: 'Joshua S.', area: 'Gilbert', quote: 'Quest walked us through material options, explained the timeline, and delivered the replacement exactly as scoped.' },
+  { name: 'Angela R.', area: 'Chandler', quote: 'Our leak was handled quickly after a storm. The written estimate and follow-up photos gave us real confidence.' },
+  { name: 'Michael T.', area: 'Mesa', quote: 'Professional from first call to cleanup. The team explained what was urgent and what could be planned later.' },
+  { name: 'Priya K.', area: 'Scottsdale', quote: 'We had a complex tile issue, and Quest documented every step before work began. The finished roof looks excellent.' }
+];
+
+const faqGroups = [
+  {
+    group: 'Estimates and inspections',
+    items: [
+      { question: 'Do you offer free roof inspections and written estimates?', answer: 'Yes. Quest Roofing can start with a roof condition review and provide a written scope so the work is clear before scheduling.' },
+      { question: 'Will I see photos before approving the work?', answer: 'Yes. Photo documentation is used to explain visible conditions, recommended repairs, and replacement considerations.' }
+    ]
+  },
+  {
+    group: 'Roof systems',
+    items: [
+      { question: 'What roofing systems do you work on?', answer: 'The team works with tile, shingle, metal, foam, low-slope, repairs, inspections, storm issues, and maintenance planning.' },
+      { question: 'How do I know whether I need repair or replacement?', answer: 'The right path depends on age, visible damage, underlayment condition, leak history, and long-term goals. The estimate outlines the options.' }
+    ]
+  },
+  {
+    group: 'Scheduling and service area',
+    items: [
+      { question: 'Where does Quest Roofing provide service?', answer: 'Quest is based in Queen Creek and serves nearby Greater Phoenix communities including Gilbert, Chandler, Mesa, Tempe, Scottsdale, Paradise Valley, and Phoenix.' },
+      { question: 'What should I do if I have an active leak?', answer: 'Call 602-399-6455, describe the leak location, and share photos if possible. Temporary protection and repair options can then be discussed.' }
+    ]
+  }
+];
+
+const blogPosts = [
+  {
+    image: image6Webp.src,
+    category: 'Roof Planning',
+    title: 'Repair or Replace: How to Read the Early Roof Warning Signs',
+    text: 'A practical look at leaks, aging materials, underlayment wear, flashing problems, and when a small repair stops being enough.'
+  },
+  {
+    image: image7Webp.src,
+    category: 'Arizona Roofing',
+    title: 'Why Photo-Backed Inspections Make Roofing Decisions Easier',
+    text: 'Photos help owners compare visible roof conditions with written scopes, material options, and scheduling priorities.'
+  },
+  {
+    image: image8Webp.src,
+    category: 'Maintenance',
+    title: 'Preparing Tile, Shingle, and Foam Roofs for Monsoon Season',
+    text: 'A checklist for penetrations, roof debris, drainage, cracked materials, and roof surfaces before heavy weather arrives.'
+  }
+];
+
+const businessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'RoofingContractor',
+  name: company.name,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: company.city,
+    addressRegion: 'AZ',
+    addressCountry: 'US'
+  },
+  telephone: company.phone,
+  email: company.email,
+  areaServed: serviceAreas,
+  priceRange: '$$',
+  description: 'Queen Creek based roofing contractor serving Greater Phoenix with inspections, repairs, replacements, written estimates, and roof documentation.'
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Quest Roofing serves Queen Creek and Greater Phoenix with photo-backed roof inspections, repairs, replacements, written estimates, and professional roofing documentation." />
+    <meta name="theme-color" content="#0A0B0D" />
+    <title>Quest Roofing | Queen Creek Roofing Contractor</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <script type="application/ld+json" set:html={JSON.stringify(businessSchema)}></script>
+  </head>
+  <body class="min-h-screen bg-[#0A0B0D] font-sans text-slate-900 antialiased">
+    <div class="min-h-screen bg-[#F5F5F2]">
+      <header class="sticky top-0 z-50 border-b border-white/10 bg-[#0A0B0D]/95 text-white shadow-2xl shadow-black/20 backdrop-blur-xl">
+        <div class="hidden border-b border-white/10 bg-[#111318] lg:block">
+          <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-300 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <span><i class="fa-solid fa-id-card-clip mr-2 text-[#F2A900]"></i>{company.license}</span>
+              <span><i class="fa-solid fa-certificate mr-2 text-[#F2A900]"></i>{company.credential}</span>
+              <span><i class="fa-solid fa-file-signature mr-2 text-[#F2A900]"></i>Free written estimates</span>
+              <span><i class="fa-solid fa-shield-halved mr-2 text-[#F2A900]"></i>{company.trust}</span>
+            </div>
+            <div class="flex items-center gap-5">
+              <a class="transition hover:text-[#F2A900]" href={company.phoneHref}>{company.phone}</a>
+              <a class="transition hover:text-[#F2A900]" href={company.emailHref}>{company.email}</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+          <button type="button" class="flex min-w-0 items-center gap-3 text-left transition hover:opacity-90" data-view-link="home" aria-label="Open Home">
+            <span class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-md border border-[#F2A900]/40 bg-white">
+              <img src={logoImage.src} alt="Quest Roofing logo" class="h-10 w-auto object-contain" />
+            </span>
+            <span class="min-w-0">
+              <span class="block text-lg font-black uppercase tracking-[0.24em] text-white sm:text-xl">Quest</span>
+              <span class="block text-xs font-bold uppercase tracking-[0.3em] text-[#F2A900]">Roofing</span>
+            </span>
+          </button>
+
+          <nav class="hidden items-center gap-1 xl:flex" aria-label="Primary navigation">
+            {navItems.map((item) => (
+              <button type="button" class={`nav-link ${item.id === 'home' ? 'is-active' : ''}`} data-view-link={item.id}>
+                {item.label}
+              </button>
+            ))}
+          </nav>
+
+          <div class="flex items-center gap-3">
+            <a href={company.phoneHref} class="hidden rounded-sm border border-[#F2A900]/50 px-4 py-2 text-sm font-black uppercase tracking-[0.18em] text-[#F2A900] transition hover:-translate-y-0.5 hover:bg-[#F2A900] hover:text-[#0A0B0D] lg:inline-flex">
+              <i class="fa-solid fa-phone mr-2"></i>Call
+            </a>
+            <button type="button" class="rounded-sm bg-[#F2A900] px-4 py-2 text-sm font-black uppercase tracking-[0.18em] text-[#0A0B0D] shadow-lg shadow-[#F2A900]/20 transition hover:-translate-y-0.5 hover:bg-white" data-view-link="contact">
+              Estimate
+            </button>
+            <button type="button" id="mobile-menu-button" class="rounded-sm border border-white/20 p-3 text-white transition hover:border-[#F2A900] hover:text-[#F2A900] xl:hidden" aria-label="Open navigation" aria-expanded="false">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden border-t border-white/10 bg-[#111318] xl:hidden">
+          <nav class="mx-auto grid max-w-7xl grid-cols-2 gap-2 px-4 py-4 sm:grid-cols-3 sm:px-6 lg:px-8" aria-label="Mobile navigation">
+            {navItems.map((item) => (
+              <button type="button" class={`mobile-nav-link ${item.id === 'home' ? 'is-active' : ''}`} data-view-link={item.id}>
+                {item.label}
+              </button>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+      <main id="app-shell">
+        <section class="view-section" data-view="home">
+          <div class="relative min-h-[calc(100vh-5rem)] overflow-hidden bg-[#0A0B0D] text-white">
+            <div class="absolute inset-0 bg-cover bg-center" style={`background-image: linear-gradient(90deg, rgba(10,11,13,0.94) 0%, rgba(10,11,13,0.78) 48%, rgba(10,11,13,0.48) 100%), url(${heroImage.src});`}></div>
+            <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0A0B0D] to-transparent"></div>
+            <div class="relative mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
+              <div class="flex min-h-[560px] flex-col justify-center">
+                <p class="mb-5 inline-flex w-fit items-center gap-3 border-l-4 border-[#F2A900] bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.28em] text-[#F2A900] backdrop-blur">
+                  <i class="fa-solid fa-location-dot"></i>{company.city}, {company.state}
+                </p>
+                <h1 class="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-normal text-white sm:text-5xl lg:text-7xl">
+                  Roof repair and replacement with zero runaround.
+                </h1>
+                <p class="mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
+                  Quest Roofing helps Greater Phoenix owners understand roof conditions before approving work, using photo-backed inspections, written scopes, and clear repair or replacement options.
+                </p>
+                <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <button type="button" class="inline-flex items-center justify-center rounded-sm bg-[#F2A900] px-6 py-4 text-sm font-black uppercase tracking-[0.2em] text-[#0A0B0D] shadow-xl shadow-[#F2A900]/20 transition hover:-translate-y-1 hover:bg-white" data-view-link="contact">
+                    <i class="fa-solid fa-calendar-check mr-3"></i>Schedule Inspection
+                  </button>
+                  <a href={company.phoneHref} class="inline-flex items-center justify-center rounded-sm border border-white/30 px-6 py-4 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:-translate-y-1 hover:border-[#F2A900] hover:text-[#F2A900]">
+                    <i class="fa-solid fa-phone mr-3"></i>{company.phone}
+                  </a>
+                </div>
+                <div class="mt-10 grid gap-3 sm:grid-cols-3">
+                  {trustIndicators.slice(0, 3).map((item) => (
+                    <div class="border border-white/12 bg-white/10 p-4 backdrop-blur transition hover:-translate-y-1 hover:border-[#F2A900]/60">
+                      <i class={`fa-solid ${item.icon} mb-3 text-xl text-[#F2A900]`}></i>
+                      <p class="text-sm font-black uppercase tracking-[0.16em] text-white">{item.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <aside class="self-end border border-white/15 bg-[#111318]/90 p-5 shadow-2xl backdrop-blur md:p-7">
+                <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-5">
+                  <div>
+                    <p class="text-xs font-black uppercase tracking-[0.28em] text-[#F2A900]">Start Here</p>
+                    <h2 class="mt-2 text-2xl font-black uppercase leading-tight text-white">Send the roof concern. Get the next step.</h2>
+                  </div>
+                  <i class="fa-solid fa-clipboard-list text-3xl text-[#F2A900]"></i>
+                </div>
+                <div class="mt-5 grid gap-3">
+                  {homeIssues.map((issue) => (
+                    <div class="grid grid-cols-[auto_1fr] gap-4 border border-white/10 bg-white/[0.06] p-4">
+                      <div class="flex h-11 w-11 items-center justify-center rounded-sm bg-[#F2A900] text-[#0A0B0D]">
+                        <i class={`fa-solid ${issue.icon}`}></i>
+                      </div>
+                      <div>
+                        <h3 class="font-black uppercase tracking-[0.12em] text-white">{issue.title}</h3>
+                        <p class="mt-1 text-sm leading-6 text-slate-300">{issue.text}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <button type="button" class="mt-5 flex w-full items-center justify-center rounded-sm bg-white px-5 py-4 text-sm font-black uppercase tracking-[0.18em] text-[#0A0B0D] transition hover:-translate-y-1 hover:bg-[#F2A900]" data-view-link="services">
+                  <i class="fa-solid fa-arrow-right mr-3"></i>Match Your Roof Issue
+                </button>
+              </aside>
+            </div>
+          </div>
+
+          <div class="bg-[#0A0B0D] px-4 pb-16 text-white sm:px-6 lg:px-8">
+            <div class="mx-auto grid max-w-7xl gap-4 border-y border-white/10 py-8 md:grid-cols-4">
+              {trustIndicators.map((item) => (
+                <div class="flex gap-4">
+                  <i class={`fa-solid ${item.icon} mt-1 text-2xl text-[#F2A900]`}></i>
+                  <div>
+                    <p class="font-black uppercase tracking-[0.14em] text-white">{item.label}</p>
+                    <p class="mt-2 text-sm leading-6 text-slate-400">{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section class="view-section hidden" data-view="about">
+          <div class="bg-[#F5F5F2] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+            <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div class="overflow-hidden border border-slate-200 bg-white p-2 shadow-xl shadow-slate-900/10">
+                <img src={image2Webp.src} alt="Quest Roofing team documenting a roof inspection" class="h-[360px] w-full object-cover sm:h-[520px]" />
+              </div>
+              <div>
+                <p class="section-kicker">About Quest Roofing</p>
+                <h1 class="mt-3 text-3xl font-black uppercase leading-tight text-[#0A0B0D] sm:text-5xl">Straight answers before roof work starts.</h1>
+                <p class="mt-6 text-lg leading-8 text-slate-600">
+                  Roof decisions are expensive, so Quest Roofing keeps the work grounded in evidence. The team documents what is visible, explains what can wait, and puts approved scopes in writing before the crew is scheduled.
+                </p>
+                <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                  {coreValues.map((value) => (
+                    <div class="border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-[#F2A900] hover:shadow-lg">
+                      <i class={`fa-solid ${value.icon} text-2xl text-[#F2A900]`}></i>
+                      <h2 class="mt-4 text-lg font-black uppercase tracking-[0.12em] text-[#0A0B0D]">{value.title}</h2>
+                      <p class="mt-2 text-sm leading-7 text-slate-600">{value.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white px-4 py-14 sm:px-6 lg:px-8">
+            <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-3">
+              <div class="lg:col-span-1">
+                <p class="section-kicker">Company Profile</p>
+                <h2 class="mt-3 text-3xl font-black uppercase text-[#0A0B0D]">Built for Arizona roof realities.</h2>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2 lg:col-span-2">
+                <div class="border border-slate-200 p-5">
+                  <p class="text-sm font-black uppercase tracking-[0.18em] text-slate-500">Base</p>
+                  <p class="mt-2 text-2xl font-black text-[#0A0B0D]">{company.city}, {company.state}</p>
+                </div>
+                <div class="border border-slate-200 p-5">
+                  <p class="text-sm font-black uppercase tracking-[0.18em] text-slate-500">Coverage</p>
+                  <p class="mt-2 text-2xl font-black text-[#0A0B0D]">{company.coverage}</p>
+                </div>
+                <div class="border border-slate-200 p-5">
+                  <p class="text-sm font-black uppercase tracking-[0.18em] text-slate-500">Credential</p>
+                  <p class="mt-2 text-2xl font-black text-[#0A0B0D]">{company.credential}</p>
+                </div>
+                <div class="border border-slate-200 p-5">
+                  <p class="text-sm font-black uppercase tracking-[0.18em] text-slate-500">Trust</p>
+                  <p class="mt-2 text-2xl font-black text-[#0A0B0D]">{company.trust}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-section hidden" data-view="services">
+          <div class="bg-[#111318] px-4 py-14 text-white sm:px-6 lg:px-8 lg:py-20">
+            <div class="mx-auto max-w-7xl">
+              <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+                <div>
+                  <p class="section-kicker">Services</p>
+                  <h1 class="mt-3 text-3xl font-black uppercase leading-tight text-white sm:text-5xl">Roofing systems handled with documentation and discipline.</h1>
+                </div>
+                <p class="text-base leading-8 text-slate-300">
+                  From active leak repair to full replacement planning, Quest Roofing aligns inspection photos, roof system knowledge, written scope, and clean execution.
+                </p>
+              </div>
+
+              <div class="mt-8 flex flex-wrap gap-2" aria-label="Service filters">
+                {serviceFilters.map((filter) => (
+                  <button type="button" class={`filter-chip ${filter.id === 'all' ? 'is-active' : ''}`} data-service-filter={filter.id}>
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+
+              <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                {services.map((service) => (
+                  <article class="service-card group overflow-hidden border border-white/10 bg-[#1D2028] shadow-xl shadow-black/20 transition duration-300 hover:-translate-y-1 hover:border-[#F2A900]/70" data-service-card data-category={service.category}>
+                    <div class="relative h-48 overflow-hidden">
+                      <img src={service.image} alt={`${service.title} service`} class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                      <div class="absolute inset-0 bg-gradient-to-t from-[#0A0B0D] via-transparent to-transparent"></div>
+                      <div class="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-sm bg-[#F2A900] text-[#0A0B0D]">
+                        <i class={`fa-solid ${service.icon}`}></i>
+                      </div>
+                    </div>
+                    <div class="p-5">
+                      <p class="text-xs font-black uppercase tracking-[0.22em] text-[#F2A900]">{service.meta}</p>
+                      <h2 class="mt-3 text-xl font-black uppercase tracking-[0.08em] text-white">{service.title}</h2>
+                      <p class="mt-3 text-sm leading-7 text-slate-300">{service.text}</p>
+                      <button type="button" class="mt-5 inline-flex items-center text-sm font-black uppercase tracking-[0.18em] text-[#F2A900] transition hover:text-white" data-view-link="contact">
+                        Request scope<i class="fa-solid fa-arrow-right ml-3"></i>
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-section hidden" data-view="process">
+          <div class="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+            <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+              <div>
+                <p class="section-kicker">Process</p>
+                <h1 class="mt-3 text-3xl font-black uppercase leading-tight text-[#0A0B0D] sm:text-5xl">A clearer roofing process from first call to final review.</h1>
+                <p class="mt-6 text-lg leading-8 text-slate-600">
+                  Every step is designed around homeowner understanding: what was seen, what is recommended, what it costs, and what happens next.
+                </p>
+                <button type="button" class="mt-8 inline-flex items-center rounded-sm bg-[#0A0B0D] px-6 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition hover:-translate-y-1 hover:bg-[#F2A900] hover:text-[#0A0B0D]" data-view-link="contact">
+                  <i class="fa-solid fa-clipboard-check mr-3"></i>Start Estimate
+                </button>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2">
+                {processSteps.map((step) => (
+                  <article class="border border-slate-200 bg-[#F5F5F2] p-6 transition hover:-translate-y-1 hover:border-[#F2A900] hover:shadow-lg">
+                    <div class="flex items-center justify-between gap-4">
+                      <span class="text-4xl font-black text-[#F2A900]">{step.number}</span>
+                      <i class={`fa-solid ${step.icon} text-2xl text-[#0A0B0D]`}></i>
+                    </div>
+                    <h2 class="mt-6 text-xl font-black uppercase tracking-[0.12em] text-[#0A0B0D]">{step.title}</h2>
+                    <p class="mt-3 text-sm leading-7 text-slate-600">{step.text}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[#0A0B0D] px-4 py-14 text-white sm:px-6 lg:px-8">
+            <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-3">
+              <div class="lg:col-span-1">
+                <p class="section-kicker">Closeout Standard</p>
+                <h2 class="mt-3 text-3xl font-black uppercase">The work is not finished until the details are visible.</h2>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-3 lg:col-span-2">
+                {['Inspection photos', 'Written scope', 'Material notes', 'Crew schedule', 'Cleanup review', 'Final documentation'].map((item) => (
+                  <div class="border border-white/10 bg-white/[0.06] p-5">
+                    <i class="fa-solid fa-check text-[#F2A900]"></i>
+                    <p class="mt-3 text-sm font-black uppercase tracking-[0.14em] text-white">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-section hidden" data-view="gallery">
+          <div class="bg-[#F5F5F2] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+            <div class="mx-auto max-w-7xl">
+              <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+                <div>
+                  <p class="section-kicker">Gallery</p>
+                  <h1 class="mt-3 text-3xl font-black uppercase leading-tight text-[#0A0B0D] sm:text-5xl">Real roof work, documented in the field.</h1>
+                </div>
+                <p class="text-base leading-8 text-slate-600">
+                  The gallery reflects the same documentation-first mindset used during inspections, active work, and final owner review.
+                </p>
+              </div>
+
+              <div class="mt-8 flex flex-wrap gap-2" aria-label="Gallery filters">
+                {galleryFilters.map((filter) => (
+                  <button type="button" class={`filter-chip light ${filter.id === 'all' ? 'is-active' : ''}`} data-gallery-filter={filter.id}>
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+
+              <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {galleryItems.map((item) => (
+                  <article class="gallery-card group overflow-hidden border border-slate-200 bg-white shadow-md transition duration-300 hover:-translate-y-1 hover:border-[#F2A900] hover:shadow-xl" data-gallery-card data-category={item.category}>
+                    <div class="relative h-64 overflow-hidden">
+                      <img src={item.image} alt={item.title} class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80"></div>
+                      <p class="absolute bottom-4 left-4 text-xs font-black uppercase tracking-[0.22em] text-[#F2A900]">{item.category}</p>
+                    </div>
+                    <div class="p-5">
+                      <h2 class="text-lg font-black uppercase tracking-[0.1em] text-[#0A0B0D]">{item.title}</h2>
+                      <p class="mt-2 text-sm leading-7 text-slate-600">{item.text}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-section hidden" data-view="service-area">
+          <div class="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+            <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+              <div>
+                <p class="section-kicker">Service Area</p>
+                <h1 class="mt-3 text-3xl font-black uppercase leading-tight text-[#0A0B0D] sm:text-5xl">Queen Creek based. Greater Phoenix ready.</h1>
+                <p class="mt-6 text-lg leading-8 text-slate-600">
+                  Quest Roofing serves nearby communities with roof inspections, repairs, replacement planning, storm response, and written estimates.
+                </p>
+                <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                  <div class="border border-slate-200 bg-[#F5F5F2] p-5">
+                    <i class="fa-solid fa-location-dot text-2xl text-[#F2A900]"></i>
+                    <p class="mt-3 text-sm font-black uppercase tracking-[0.18em] text-slate-500">Base</p>
+                    <p class="mt-1 text-2xl font-black text-[#0A0B0D]">{company.address}</p>
+                  </div>
+                  <div class="border border-slate-200 bg-[#F5F5F2] p-5">
+                    <i class="fa-solid fa-compass-drafting text-2xl text-[#F2A900]"></i>
+                    <p class="mt-3 text-sm font-black uppercase tracking-[0.18em] text-slate-500">Radius</p>
+                    <p class="mt-1 text-2xl font-black text-[#0A0B0D]">Greater Phoenix</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border border-slate-200 bg-[#F5F5F2] p-5 shadow-xl shadow-slate-900/10">
+                <div class="relative min-h-[420px] overflow-hidden border border-slate-300 bg-[#111318] p-6 text-white">
+                  <div class="absolute inset-0 opacity-20" style={`background-image: url(${image10Webp.src}); background-size: cover; background-position: center;`}></div>
+                  <div class="relative grid min-h-[360px] place-items-center">
+                    <div class="flex h-48 w-48 items-center justify-center rounded-full border border-[#F2A900]/50 bg-[#F2A900]/15 text-center shadow-2xl shadow-[#F2A900]/20">
+                      <div>
+                        <i class="fa-solid fa-map-location-dot text-3xl text-[#F2A900]"></i>
+                        <p class="mt-3 text-sm font-black uppercase tracking-[0.22em] text-white">Queen Creek</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="relative grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    {serviceAreas.map((area) => (
+                      <div class="border border-white/10 bg-white/10 px-3 py-2 text-sm font-bold text-slate-100 backdrop-blur">
+                        <i class="fa-solid fa-location-crosshairs mr-2 text-[#F2A900]"></i>{area}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-section hidden" data-view="reviews">
+          <div class="bg-[#111318] px-4 py-14 text-white sm:px-6 lg:px-8 lg:py-20">
+            <div class="mx-auto max-w-7xl">
+              <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+                <div>
+                  <p class="section-kicker">Reviews</p>
+                  <h1 class="mt-3 text-3xl font-black uppercase leading-tight text-white sm:text-5xl">Homeowner feedback that speaks to the work.</h1>
+                </div>
+                <div class="grid gap-4 sm:grid-cols-3">
+                  <div class="border border-white/10 bg-white/[0.06] p-5">
+                    <p class="text-3xl font-black text-[#F2A900]">4.9</p>
+                    <p class="mt-2 text-xs font-black uppercase tracking-[0.18em] text-slate-300">Average sentiment</p>
+                  </div>
+                  <div class="border border-white/10 bg-white/[0.06] p-5">
+                    <p class="text-3xl font-black text-[#F2A900]">500+</p>
+                    <p class="mt-2 text-xs font-black uppercase tracking-[0.18em] text-slate-300">Documented projects</p>
+                  </div>
+                  <div class="border border-white/10 bg-white/[0.06] p-5">
+                    <p class="text-3xl font-black text-[#F2A900]">A+</p>
+                    <p class="mt-2 text-xs font-black uppercase tracking-[0.18em] text-slate-300">Trust posture</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-10 overflow-hidden border-y border-white/10 py-8" data-carousel>
+                <div class="flex gap-5 will-change-transform" data-carousel-track>
+                  {[...reviews, ...reviews].map((review) => (
+                    <article class="w-[320px] shrink-0 border border-white/10 bg-white/[0.06] p-6 shadow-xl shadow-black/20 sm:w-[420px]">
+                      <div class="flex items-center gap-1 text-[#F2A900]" aria-label="Five star review">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <p class="mt-5 text-base leading-8 text-slate-200">"{review.quote}"</p>
+                      <div class="mt-6 border-t border-white/10 pt-4">
+                        <p class="font-black uppercase tracking-[0.14em] text-white">{review.name}</p>
+                        <p class="mt-1 text-sm text-slate-400">{review.area}</p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-section hidden" data-view="faq">
+          <div class="bg-[#F5F5F2] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+            <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+              <div>
+                <p class="section-kicker">FAQ</p>
+                <h1 class="mt-3 text-3xl font-black uppercase leading-tight text-[#0A0B0D] sm:text-5xl">Questions owners ask before they book.</h1>
+                <p class="mt-6 text-lg leading-8 text-slate-600">
+                  The best roofing conversations start with clear expectations around scope, documentation, systems, and scheduling.
+                </p>
+              </div>
+              <div class="space-y-6">
+                {faqGroups.map((group) => (
+                  <div>
+                    <h2 class="mb-3 text-sm font-black uppercase tracking-[0.22em] text-[#F2A900]">{group.group}</h2>
+                    <div class="space-y-3">
+                      {group.items.map((item, index) => (
+                        <article class={`faq-item border border-slate-200 bg-white shadow-sm ${index === 0 ? 'is-open' : ''}`}>
+                          <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left" data-faq-toggle aria-expanded={index === 0 ? 'true' : 'false'}>
+                            <span class="text-base font-black uppercase tracking-[0.08em] text-[#0A0B0D]">{item.question}</span>
+                            <i class="faq-icon fa-solid fa-plus text-[#F2A900] transition"></i>
+                          </button>
+                          <div class="faq-panel">
+                            <p class="px-5 pb-5 text-sm leading-7 text-slate-600">{item.answer}</p>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-section hidden" data-view="blog">
+          <div class="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+            <div class="mx-auto max-w-7xl">
+              <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+                <div>
+                  <p class="section-kicker">Blog</p>
+                  <h1 class="mt-3 text-3xl font-black uppercase leading-tight text-[#0A0B0D] sm:text-5xl">Roof planning insights for Arizona properties.</h1>
+                </div>
+                <p class="text-base leading-8 text-slate-600">
+                  Practical guidance for owners comparing repairs, replacements, inspections, and long-term maintenance.
+                </p>
+              </div>
+
+              <div class="mt-10 grid gap-5 md:grid-cols-3">
+                {blogPosts.map((post) => (
+                  <article class="overflow-hidden border border-slate-200 bg-[#F5F5F2] shadow-md transition hover:-translate-y-1 hover:border-[#F2A900] hover:shadow-xl">
+                    <img src={post.image} alt={post.title} class="h-56 w-full object-cover" />
+                    <div class="p-5">
+                      <p class="text-xs font-black uppercase tracking-[0.22em] text-[#F2A900]">{post.category}</p>
+                      <h2 class="mt-3 text-xl font-black uppercase leading-tight text-[#0A0B0D]">{post.title}</h2>
+                      <p class="mt-3 text-sm leading-7 text-slate-600">{post.text}</p>
+                      <button type="button" class="mt-5 inline-flex items-center text-sm font-black uppercase tracking-[0.18em] text-[#0A0B0D] transition hover:text-[#F2A900]" data-view-link="contact">
+                        Discuss project<i class="fa-solid fa-arrow-right ml-3"></i>
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-section hidden" data-view="contact">
+          <div class="bg-[#0A0B0D] px-4 py-14 text-white sm:px-6 lg:px-8 lg:py-20">
+            <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+              <div>
+                <p class="section-kicker">Contact</p>
+                <h1 class="mt-3 text-3xl font-black uppercase leading-tight text-white sm:text-5xl">Start with photos, a written scope, and a clear answer.</h1>
+                <p class="mt-6 text-lg leading-8 text-slate-300">
+                  Tell Quest Roofing what is happening with the roof and the best way to reach you. The team will follow up with the next inspection or estimate step.
+                </p>
+                <div class="mt-8 space-y-3">
+                  <a href={company.phoneHref} class="contact-row">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>{company.phone}</span>
+                  </a>
+                  <a href={company.emailHref} class="contact-row">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>{company.email}</span>
+                  </a>
+                  <div class="contact-row">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>{company.coverage}</span>
+                  </div>
+                  <div class="contact-row">
+                    <i class="fa-solid fa-clock"></i>
+                    <span>{company.hours}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border border-white/10 bg-white/[0.06] p-5 shadow-2xl shadow-black/30 backdrop-blur sm:p-7">
+                <div id="form-success" class="mb-5 hidden border border-[#F2A900]/50 bg-[#F2A900]/15 p-4 text-sm font-bold text-[#F2A900]">
+                  Your request is staged. A Quest Roofing representative would follow up with the next inspection step.
+                </div>
+                <form class="grid gap-4" data-contact-form>
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <label class="field-label">
+                      Full name
+                      <input class="field-input" name="name" type="text" required />
+                    </label>
+                    <label class="field-label">
+                      Phone
+                      <input class="field-input" name="phone" type="tel" required />
+                    </label>
+                  </div>
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <label class="field-label">
+                      Email
+                      <input class="field-input" name="email" type="email" />
+                    </label>
+                    <label class="field-label">
+                      Service needed
+                      <select class="field-input" name="service" required>
+                        <option value="">Select a service</option>
+                        <option>Roof repair</option>
+                        <option>Tile roofing</option>
+                        <option>Shingle roofing</option>
+                        <option>Metal roofing</option>
+                        <option>Foam roofing</option>
+                        <option>Storm or emergency</option>
+                        <option>Inspection</option>
+                        <option>Not sure yet</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <label class="field-label">
+                      Address or cross streets
+                      <input class="field-input" name="address" type="text" />
+                    </label>
+                    <label class="field-label">
+                      Urgency
+                      <select class="field-input" name="urgency">
+                        <option>Planning ahead</option>
+                        <option>Active leak</option>
+                        <option>Recent storm</option>
+                        <option>Real estate timeline</option>
+                      </select>
+                    </label>
+                  </div>
+                  <label class="field-label">
+                    Project details
+                    <textarea class="field-input min-h-36 resize-y" name="details" required></textarea>
+                  </label>
+                  <label class="flex items-start gap-3 text-sm leading-6 text-slate-300">
+                    <input type="checkbox" class="mt-1 h-4 w-4 rounded-sm border-white/30 bg-transparent accent-[#F2A900]" required />
+                    <span>I agree to be contacted by Quest Roofing about this roofing request.</span>
+                  </label>
+                  <button type="submit" class="rounded-sm bg-[#F2A900] px-6 py-4 text-sm font-black uppercase tracking-[0.18em] text-[#0A0B0D] transition hover:-translate-y-1 hover:bg-white">
+                    <i class="fa-solid fa-paper-plane mr-3"></i>Submit Request
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-white/10 bg-[#0A0B0D] px-4 py-10 text-white sm:px-6 lg:px-8">
+        <div class="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1.1fr_0.9fr_0.9fr_1fr]">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="flex h-11 w-11 items-center justify-center overflow-hidden rounded-sm bg-white">
+                <img src={logoImage.src} alt="Quest Roofing logo" class="h-9 w-auto" />
+              </span>
+              <div>
+                <p class="text-lg font-black uppercase tracking-[0.24em]">Quest</p>
+                <p class="text-xs font-black uppercase tracking-[0.26em] text-[#F2A900]">Roofing</p>
+              </div>
+            </div>
+            <p class="mt-4 max-w-sm text-sm leading-7 text-slate-400">
+              Queen Creek roofing contractor serving Greater Phoenix with documented inspections, written estimates, repairs, replacements, and maintenance planning.
+            </p>
+          </div>
+          <div>
+            <h2 class="text-sm font-black uppercase tracking-[0.22em] text-[#F2A900]">Services</h2>
+            <div class="mt-4 grid gap-2 text-sm text-slate-300">
+              {services.slice(0, 5).map((service) => (
+                <button type="button" class="w-fit text-left transition hover:text-[#F2A900]" data-view-link="services">{service.title}</button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 class="text-sm font-black uppercase tracking-[0.22em] text-[#F2A900]">Company</h2>
+            <div class="mt-4 grid gap-2 text-sm text-slate-300">
+              {navItems.slice(1, 9).map((item) => (
+                <button type="button" class="w-fit text-left transition hover:text-[#F2A900]" data-view-link={item.id}>{item.label}</button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 class="text-sm font-black uppercase tracking-[0.22em] text-[#F2A900]">Business Metadata</h2>
+            <ul class="mt-4 space-y-2 text-sm leading-6 text-slate-300">
+              <li><i class="fa-solid fa-phone mr-2 text-[#F2A900]"></i>{company.phone}</li>
+              <li><i class="fa-solid fa-envelope mr-2 text-[#F2A900]"></i>{company.email}</li>
+              <li><i class="fa-solid fa-id-card-clip mr-2 text-[#F2A900]"></i>{company.license}</li>
+              <li><i class="fa-solid fa-certificate mr-2 text-[#F2A900]"></i>{company.credential}</li>
+              <li><i class="fa-solid fa-shield-halved mr-2 text-[#F2A900]"></i>{company.trust}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mx-auto mt-8 flex max-w-7xl flex-col gap-3 border-t border-white/10 pt-6 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; 2026 Quest Roofing. All rights reserved.</p>
+          <p>Queen Creek, Arizona</p>
+        </div>
+      </footer>
+    </div>
+
+    <style is:global>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .view-section:not(.hidden) {
+        animation: viewIn 360ms ease both;
+      }
+
+      .nav-link {
+        position: relative;
+        padding: 0.75rem 0.55rem;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgb(203 213 225);
+        transition: color 220ms ease, transform 220ms ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.is-active {
+        color: #F2A900;
+        transform: translateY(-1px);
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0.55rem;
+        right: 0.55rem;
+        bottom: 0.35rem;
+        height: 2px;
+        transform: scaleX(0);
+        transform-origin: center;
+        background: #F2A900;
+        transition: transform 220ms ease;
+      }
+
+      .nav-link.is-active::after,
+      .nav-link:hover::after {
+        transform: scaleX(1);
+      }
+
+      .mobile-nav-link {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.85rem 0.75rem;
+        text-align: left;
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgb(226 232 240);
+        transition: border-color 220ms ease, color 220ms ease, background 220ms ease;
+      }
+
+      .mobile-nav-link:hover,
+      .mobile-nav-link.is-active {
+        border-color: rgba(242, 169, 0, 0.65);
+        background: rgba(242, 169, 0, 0.12);
+        color: #F2A900;
+      }
+
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        color: #F2A900;
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .section-kicker::before {
+        content: "";
+        width: 2.5rem;
+        height: 3px;
+        background: #F2A900;
+      }
+
+      .filter-chip {
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.06);
+        padding: 0.75rem 1rem;
+        color: rgb(226 232 240);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, color 220ms ease;
+      }
+
+      .filter-chip.light {
+        border-color: rgb(203 213 225);
+        background: white;
+        color: #0A0B0D;
+      }
+
+      .filter-chip:hover,
+      .filter-chip.is-active {
+        transform: translateY(-2px);
+        border-color: #F2A900;
+        background: #F2A900;
+        color: #0A0B0D;
+      }
+
+      .faq-panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 280ms ease;
+      }
+
+      .faq-item.is-open .faq-panel {
+        max-height: 260px;
+      }
+
+      .faq-item.is-open .faq-icon {
+        transform: rotate(45deg);
+      }
+
+      .contact-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.06);
+        padding: 1rem;
+        color: rgb(226 232 240);
+        transition: border-color 220ms ease, transform 220ms ease, color 220ms ease;
+      }
+
+      .contact-row:hover {
+        transform: translateY(-2px);
+        border-color: rgba(242, 169, 0, 0.65);
+        color: #F2A900;
+      }
+
+      .contact-row i {
+        color: #F2A900;
+      }
+
+      .field-label {
+        display: grid;
+        gap: 0.55rem;
+        color: rgb(226 232 240);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .field-input {
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 0;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 0.95rem 1rem;
+        color: white;
+        outline: none;
+        transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
+      }
+
+      .field-input:focus {
+        border-color: #F2A900;
+        background: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 0 0 3px rgba(242, 169, 0, 0.18);
+      }
+
+      .field-input option {
+        color: #0A0B0D;
+      }
+
+      @keyframes viewIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+
+    <script is:inline>
+      (() => {
+        const views = Array.from(document.querySelectorAll('[data-view]'));
+        const viewLinks = Array.from(document.querySelectorAll('[data-view-link]'));
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileButton = document.getElementById('mobile-menu-button');
+        const validViews = new Set(views.map((view) => view.getAttribute('data-view')));
+
+        function closeMobileMenu() {
+          mobileMenu?.classList.add('hidden');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+        }
+
+        function setView(nextView, updateHash = true) {
+          const target = validViews.has(nextView) ? nextView : 'home';
+
+          views.forEach((section) => {
+            section.classList.toggle('hidden', section.getAttribute('data-view') !== target);
+          });
+
+          viewLinks.forEach((link) => {
+            link.classList.toggle('is-active', link.getAttribute('data-view-link') === target);
+          });
+
+          closeMobileMenu();
+
+          if (updateHash) {
+            history.replaceState(null, '', `#${target}`);
+          }
+
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        viewLinks.forEach((link) => {
+          link.addEventListener('click', () => {
+            const target = link.getAttribute('data-view-link') || 'home';
+            setView(target);
+          });
+        });
+
+        mobileButton?.addEventListener('click', () => {
+          const willOpen = mobileMenu?.classList.contains('hidden');
+          mobileMenu?.classList.toggle('hidden');
+          mobileButton.setAttribute('aria-expanded', String(Boolean(willOpen)));
+        });
+
+        const initialHash = window.location.hash.replace('#', '');
+        setView(initialHash || 'home', false);
+
+        window.addEventListener('hashchange', () => {
+          setView(window.location.hash.replace('#', ''), false);
+        });
+
+        function setupFilter(buttonSelector, cardSelector, attribute) {
+          const buttons = Array.from(document.querySelectorAll(buttonSelector));
+          const cards = Array.from(document.querySelectorAll(cardSelector));
+
+          buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+              const filter = button.getAttribute(attribute) || 'all';
+              buttons.forEach((item) => item.classList.toggle('is-active', item === button));
+              cards.forEach((card) => {
+                const matches = filter === 'all' || card.getAttribute('data-category') === filter;
+                card.classList.toggle('hidden', !matches);
+              });
+            });
+          });
+        }
+
+        setupFilter('[data-service-filter]', '[data-service-card]', 'data-service-filter');
+        setupFilter('[data-gallery-filter]', '[data-gallery-card]', 'data-gallery-filter');
+
+        document.querySelectorAll('[data-faq-toggle]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const item = button.closest('.faq-item');
+            const group = item?.parentElement;
+
+            group?.querySelectorAll('.faq-item').forEach((sibling) => {
+              if (sibling !== item) {
+                sibling.classList.remove('is-open');
+                sibling.querySelector('[data-faq-toggle]')?.setAttribute('aria-expanded', 'false');
+              }
+            });
+
+            const isOpen = !item?.classList.contains('is-open');
+            item?.classList.toggle('is-open', isOpen);
+            button.setAttribute('aria-expanded', String(isOpen));
+          });
+        });
+
+        const carousel = document.querySelector('[data-carousel]');
+        const track = document.querySelector('[data-carousel-track]');
+        let offset = 0;
+        let lastFrame = 0;
+        let paused = false;
+
+        carousel?.addEventListener('pointerenter', () => {
+          paused = true;
+        });
+
+        carousel?.addEventListener('pointerleave', () => {
+          paused = false;
+        });
+
+        function animateCarousel(timestamp) {
+          if (!lastFrame) {
+            lastFrame = timestamp;
+          }
+
+          const delta = timestamp - lastFrame;
+          lastFrame = timestamp;
+
+          if (track && !paused) {
+            const halfWidth = track.scrollWidth / 2;
+            if (halfWidth > 0) {
+              offset = (offset + delta * 0.04) % halfWidth;
+              track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+            }
+          }
+
+          requestAnimationFrame(animateCarousel);
+        }
+
+        requestAnimationFrame(animateCarousel);
+
+        const form = document.querySelector('[data-contact-form]');
+        const success = document.getElementById('form-success');
+
+        form?.addEventListener('submit', (event) => {
+          event.preventDefault();
+          success?.classList.remove('hidden');
+          form.reset();
+        });
+      })();
+    </script>
+  </body>
+</html>
