@@ -1,0 +1,237 @@
+---
+import '../styles/global.css';
+import logoImage from '../images/logo.webp';
+
+export interface Props {
+  title: string;
+  description: string;
+  publishedAt: Date;
+  category: string;
+  city: string;
+  image: string;
+  imageAlt: string;
+  keywords: string[];
+  slug: string;
+}
+
+const {
+  title,
+  description,
+  publishedAt,
+  category,
+  city,
+  image,
+  imageAlt,
+  keywords,
+  slug,
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://questroofing.com');
+const canonicalUrl = new URL(`/${slug}/`, site).href;
+const imageUrl = new URL(image, site).href;
+const formattedDate = publishedAt.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: publishedAt.toISOString().slice(0, 10),
+  image: imageUrl,
+  author: {
+    '@type': 'Organization',
+    name: 'Quest Roofing',
+    url: 'https://questroofing.com/',
+  },
+  publisher: {
+    '@type': 'RoofingContractor',
+    name: 'Quest Roofing',
+    telephone: '602-399-6455',
+    image: 'https://questroofing.com/favicon.svg',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Queen Creek',
+      addressRegion: 'AZ',
+      addressCountry: 'US',
+    },
+  },
+  mainEntityOfPage: canonicalUrl,
+  keywords,
+  contentLocation: {
+    '@type': 'Place',
+    name: city,
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(', ')} />
+    <meta name="theme-color" content="#0A0B0D" />
+    <title>{title} | Quest Roofing</title>
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify(blogSchema)}></script>
+  </head>
+  <body class="min-h-screen bg-[#F5F5F2] text-slate-900 antialiased">
+    <header class="border-b border-white/10 bg-[#0A0B0D] text-white shadow-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-5 px-4 py-4 sm:px-6 lg:px-8">
+        <a href="/" class="flex items-center gap-3" aria-label="Quest Roofing home">
+          <span class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-md border border-[#F2A900]/40 bg-white">
+            <img src={logoImage.src} alt="Quest Roofing logo" class="h-10 w-auto object-contain" />
+          </span>
+          <span>
+            <span class="block text-lg font-black uppercase tracking-[0.24em]">Quest</span>
+            <span class="block text-xs font-bold uppercase tracking-[0.3em] text-[#F2A900]">Roofing</span>
+          </span>
+        </a>
+        <div class="hidden items-center gap-6 text-xs font-black uppercase tracking-[0.16em] md:flex">
+          <a href="/#services" class="transition hover:text-[#F2A900]">Services</a>
+          <a href="/#blog" class="transition hover:text-[#F2A900]">Blog</a>
+          <a href="tel:6023996455" class="text-[#F2A900]">602-399-6455</a>
+        </div>
+        <a href="/#contact" class="rounded-sm bg-[#F2A900] px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-[#0A0B0D] transition hover:bg-white">
+          Free inspection
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="bg-[#0A0B0D] px-4 py-14 text-white sm:px-6 lg:px-8 lg:py-20">
+        <div class="mx-auto max-w-5xl">
+          <nav class="text-xs font-black uppercase tracking-[0.2em] text-slate-400" aria-label="Breadcrumb">
+            <a href="/" class="transition hover:text-[#F2A900]">Home</a>
+            <span class="mx-2 text-[#F2A900]">/</span>
+            <a href="/#blog" class="transition hover:text-[#F2A900]">Blog</a>
+          </nav>
+          <p class="mt-8 text-xs font-black uppercase tracking-[0.24em] text-[#F2A900]">{category} · {city}</p>
+          <h1 class="mt-4 max-w-4xl text-4xl font-black uppercase leading-[0.98] text-white sm:text-5xl lg:text-6xl">{title}</h1>
+          <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-300">{description}</p>
+          <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold text-slate-400">
+            <time datetime={publishedAt.toISOString().slice(0, 10)}>{formattedDate}</time>
+            <span>Quest Roofing</span>
+            <span>AZ ROC #355136</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        <img src={image} alt={imageAlt} class="h-[320px] w-full border border-slate-200 object-cover shadow-xl sm:h-[460px]" />
+        <div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
+          <article class="article-content min-w-0 bg-white px-6 py-8 shadow-sm sm:px-10 sm:py-12">
+            <slot />
+          </article>
+          <aside class="h-fit border-t-4 border-[#F2A900] bg-[#0A0B0D] p-6 text-white lg:sticky lg:top-6">
+            <p class="text-xs font-black uppercase tracking-[0.22em] text-[#F2A900]">Photo-backed inspection</p>
+            <h2 class="mt-3 text-2xl font-black uppercase leading-tight">Get a clear answer after the storm.</h2>
+            <p class="mt-4 text-sm leading-7 text-slate-300">Quest documents visible roof conditions and provides a written next step before approved work begins.</p>
+            <a href="/#contact" class="mt-6 inline-flex w-full items-center justify-center bg-[#F2A900] px-4 py-4 text-center text-xs font-black uppercase tracking-[0.15em] text-[#0A0B0D] transition hover:bg-white">
+              Request a free roof inspection
+            </a>
+            <a href="tel:6023996455" class="mt-4 block text-center text-sm font-black text-white transition hover:text-[#F2A900]">602-399-6455</a>
+          </aside>
+        </div>
+      </div>
+
+      <section class="bg-[#F2A900] px-4 py-12 sm:px-6 lg:px-8">
+        <div class="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[0.22em] text-[#0A0B0D]/65">Queen Creek-based roofing contractor</p>
+            <h2 class="mt-2 text-3xl font-black uppercase text-[#0A0B0D]">Start with photos and a written scope.</h2>
+          </div>
+          <a href="/#contact" class="shrink-0 bg-[#0A0B0D] px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:-translate-y-1">
+            Request inspection
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-[#0A0B0D] px-4 py-8 text-sm text-slate-400 sm:px-6 lg:px-8">
+      <div class="mx-auto flex max-w-7xl flex-col justify-between gap-4 sm:flex-row">
+        <p>© 2026 Quest Roofing · Queen Creek, Arizona</p>
+        <p>AZ ROC #355136 · GAF Certified · Licensed, bonded, and insured</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .article-content :global(p) {
+    margin-top: 1.25rem;
+    color: #475569;
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+
+  .article-content :global(h2) {
+    margin-top: 2.75rem;
+    border-left: 4px solid #F2A900;
+    padding-left: 1rem;
+    color: #0A0B0D;
+    font-size: clamp(1.45rem, 2.5vw, 2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+
+  .article-content :global(a) {
+    color: #9a6500;
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-color: #F2A900;
+    text-underline-offset: 0.2rem;
+  }
+
+  .article-content :global(strong) {
+    color: #0A0B0D;
+  }
+
+  .article-content :global(.article-cta) {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    border-top: 4px solid #F2A900;
+    background: #0A0B0D;
+    padding: 1.5rem;
+    color: white;
+  }
+
+  .article-content :global(.article-cta strong) {
+    color: white;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .article-content :global(.article-cta span) {
+    color: #cbd5e1;
+    line-height: 1.6;
+  }
+
+  .article-content :global(.article-cta a) {
+    width: fit-content;
+    background: #F2A900;
+    padding: 0.8rem 1rem;
+    color: #0A0B0D;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+</style>

@@ -1,11 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind({ configFile: './tailwind.config.mjs' })],
+  site: 'https://questroofing.com',
+  integrations: [sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
 
 

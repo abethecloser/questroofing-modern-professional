@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { getCollection } from 'astro:content';
 import logoImage from '../images/logo.webp';
 import heroImage from '../images/image1.jpg';
 import image1Webp from '../images/image1.webp';
@@ -221,23 +222,39 @@ const faqGroups = [
 ];
 
 const blogPosts = [
+  ...(await getCollection('blog'))
+    .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+    .map((post) => ({
+      image: post.data.image,
+      category: post.data.category,
+      title: post.data.title,
+      text: post.data.description,
+      href: `/${post.id}/`,
+      ctaLabel: 'Read article'
+    })),
   {
     image: image6Webp.src,
     category: 'Roof Planning',
     title: 'Repair or Replace: How to Read the Early Roof Warning Signs',
-    text: 'A practical look at leaks, aging materials, underlayment wear, flashing problems, and when a small repair stops being enough.'
+    text: 'A practical look at leaks, aging materials, underlayment wear, flashing problems, and when a small repair stops being enough.',
+    href: '#contact',
+    ctaLabel: 'Discuss project'
   },
   {
     image: image7Webp.src,
     category: 'Arizona Roofing',
     title: 'Why Photo-Backed Inspections Make Roofing Decisions Easier',
-    text: 'Photos help owners compare visible roof conditions with written scopes, material options, and scheduling priorities.'
+    text: 'Photos help owners compare visible roof conditions with written scopes, material options, and scheduling priorities.',
+    href: '#contact',
+    ctaLabel: 'Discuss project'
   },
   {
     image: image8Webp.src,
     category: 'Maintenance',
     title: 'Preparing Tile, Shingle, and Foam Roofs for Monsoon Season',
-    text: 'A checklist for penetrations, roof debris, drainage, cracked materials, and roof surfaces before heavy weather arrives.'
+    text: 'A checklist for penetrations, roof debris, drainage, cracked materials, and roof surfaces before heavy weather arrives.',
+    href: '#contact',
+    ctaLabel: 'Discuss project'
   }
 ];
 
@@ -267,6 +284,7 @@ const businessSchema = {
     <meta name="description" content="Quest Roofing serves Queen Creek and Greater Phoenix with photo-backed roof inspections, repairs, replacements, written estimates, and professional roofing documentation." />
     <meta name="theme-color" content="#0A0B0D" />
     <title>Quest Roofing | Queen Creek Roofing Contractor</title>
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -746,9 +764,9 @@ const businessSchema = {
                       <p class="text-xs font-black uppercase tracking-[0.22em] text-[#F2A900]">{post.category}</p>
                       <h2 class="mt-3 text-xl font-black uppercase leading-tight text-[#0A0B0D]">{post.title}</h2>
                       <p class="mt-3 text-sm leading-7 text-slate-600">{post.text}</p>
-                      <button type="button" class="mt-5 inline-flex items-center text-sm font-black uppercase tracking-[0.18em] text-[#0A0B0D] transition hover:text-[#F2A900]" data-view-link="contact">
-                        Discuss project<i class="fa-solid fa-arrow-right ml-3"></i>
-                      </button>
+                      <a href={post.href} class="mt-5 inline-flex items-center text-sm font-black uppercase tracking-[0.18em] text-[#0A0B0D] transition hover:text-[#F2A900]">
+                        {post.ctaLabel}<i class="fa-solid fa-arrow-right ml-3"></i>
+                      </a>
                     </div>
                   </article>
                 ))}
